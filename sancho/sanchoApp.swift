@@ -10,9 +10,12 @@ import SwiftData
 
 @main
 struct sanchoApp: App {
+    @State private var isAuthenticated = false
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            LearningSession.self,
+            UserProgress.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +28,11 @@ struct sanchoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isAuthenticated {
+                ContentView()
+            } else {
+                AuthenticationView(isAuthenticated: $isAuthenticated)
+            }
         }
         .modelContainer(sharedModelContainer)
     }
