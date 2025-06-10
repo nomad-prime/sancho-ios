@@ -8,6 +8,7 @@
 import Testing
 import SwiftData
 @testable import sancho // Ensure your main app target is importable
+import Foundation
 
 @Suite struct ModelTests {
 
