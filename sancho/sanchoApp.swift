@@ -16,6 +16,7 @@ struct sanchoApp: App {
         let schema = Schema([
             LearningSession.self,
             UserProgress.self,
+            ChatMessageData.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

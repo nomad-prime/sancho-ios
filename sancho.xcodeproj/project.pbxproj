@@ -27,6 +27,14 @@
 		F24C00C62DEEC74A0058911E /* sancho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sancho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24C00D52DEEC74C0058911E /* sanchoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sanchoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24C00DF2DEEC74C0058911E /* sanchoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sanchoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F6071122334455 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConversationView.swift; path = sancho/ConversationView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6071122334477 /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConversationViewModel.swift; path = sancho/ConversationViewModel.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6071122334489 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
+		A1B2C3D4E5F6071122334490 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A1B2C3D4E5F6071122334492 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageView.swift; path = sancho/MessageView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6071122334494 /* ChatMessageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatMessageData.swift; path = sancho/ChatMessageData.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6071122334496 /* ConversationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConversationViewModelTests.swift; path = sanchoTests/ConversationViewModelTests.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6071122334498 /* ConversationFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConversationFlowUITests.swift; path = sanchoUITests/ConversationFlowUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B2C3D4E5F6071122334488 /* Speech.framework in Frameworks */,
+				A1B2C3D4E5F6071122334491 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B2C3D4E5F6071122334497 /* ConversationViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +247,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B2C3D4E5F6071122334456 /* ConversationView.swift in Sources */,
+				A1B2C3D4E5F6071122334478 /* ConversationViewModel.swift in Sources */,
+				A1B2C3D4E5F6071122334493 /* MessageView.swift in Sources */,
+				A1B2C3D4E5F6071122334495 /* ChatMessageData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B2C3D4E5F6071122334499 /* ConversationFlowUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +283,17 @@
 			targetProxy = F24C00E02DEEC74C0058911E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXBuildFile section */
+		A1B2C3D4E5F6071122334456 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6071122334455 /* ConversationView.swift */; };
+		A1B2C3D4E5F6071122334478 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6071122334477 /* ConversationViewModel.swift */; };
+		A1B2C3D4E5F6071122334488 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6071122334489 /* Speech.framework */; };
+		A1B2C3D4E5F6071122334491 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6071122334490 /* AVFoundation.framework */; };
+		A1B2C3D4E5F6071122334493 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6071122334492 /* MessageView.swift */; };
+		A1B2C3D4E5F6071122334495 /* ChatMessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6071122334494 /* ChatMessageData.swift */; };
+		A1B2C3D4E5F6071122334497 /* ConversationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6071122334496 /* ConversationViewModelTests.swift */; };
+		A1B2C3D4E5F6071122334499 /* ConversationFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6071122334498 /* ConversationFlowUITests.swift */; };
+/* End PBXBuildFile section */
 
 /* Begin XCBuildConfiguration section */
 		F24C00E72DEEC74C0058911E /* Debug */ = {
