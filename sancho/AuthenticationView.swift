@@ -28,14 +28,13 @@ struct AuthenticationView: View {
             .padding()
             .buttonStyle(.borderedProminent)
 
-            Button("Sign Up") {
+            SanchoButton(title: "Sign Up") {
                 // Action for sign up (placeholder)
                 print("Sign Up button tapped")
             }
-            .buttonStyle(.bordered)
 
             // Temporary button to simulate successful login
-            Button("Simulate Login") {
+            SanchoButton(title: "Simulate Login") {
                 isAuthenticated = true
             }
             .padding(.top, 30)
