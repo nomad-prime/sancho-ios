@@ -24,8 +24,8 @@ jobs:
       - name: Build
         run: |
           xcodebuild clean build \
-            -scheme "MyApp" \
-            -workspace "MyApp.xcworkspace" \
+            -scheme "sancho" \
+            -workspace "sancho.xcworkspace" \
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 14' \
             ONLY_ACTIVE_ARCH=YES
@@ -34,8 +34,8 @@ jobs:
       - name: Run tests
         run: |
           xcodebuild clean test \
-            -scheme "MyApp" \
-            -workspace "MyApp.xcworkspace" \
+            -scheme "sancho" \
+            -workspace "sancho.xcworkspace" \
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 14' \
             ONLY_ACTIVE_ARCH=YES
