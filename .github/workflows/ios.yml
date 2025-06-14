@@ -17,29 +17,23 @@ jobs:
       - name: Select Xcode version
         run: sudo xcode-select -s /Applications/Xcode.app
 
-      # - name: Install CocoaPods dependencies
-      #   run: pod install
-
-
       - name: Build
         run: |
           xcodebuild clean build \
             -scheme "sancho" \
-            -workspace "sancho.xcworkspace" \
+            -project "sancho.xcodeproj" \
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 14' \
             ONLY_ACTIVE_ARCH=YES
-
 
       - name: Run tests
         run: |
           xcodebuild clean test \
             -scheme "sancho" \
-            -workspace "sancho.xcworkspace" \
+            -project "sancho.xcodeproj" \
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 14' \
             ONLY_ACTIVE_ARCH=YES
-
 
       - name: Archive test results
         if: always()
@@ -47,5 +41,4 @@ jobs:
         with:
           name: TestResults
           path: ~/Library/Developer/Xcode/DerivedData/**/Logs/Test/*.xcresult
-
 
