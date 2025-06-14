@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "82C44DA8-B806-4C79-BA9D-77202BD6C371",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:sancho.xcodeproj",
+        "identifier" : "F24C00D42DEEC74C0058911E",
+        "name" : "AmigoSanchoTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:sancho.xcodeproj",
+        "identifier" : "F24C00DE2DEEC74C0058911E",
+        "name" : "AmigoSanchoUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

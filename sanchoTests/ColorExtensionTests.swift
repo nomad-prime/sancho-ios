@@ -1,7 +1,7 @@
 import XCTest
 import SwiftUI
 
-@testable import sancho
+@testable import AmigoSancho
 
 final class ColorExtensionTests: XCTestCase {
 

@@ -14,7 +14,8 @@ struct LearnView: View {
 
                 SanchoButton(title: "Start Speaking Practice") {
                     isPracticeActive = true
-                }
+                }.accessibilityIdentifier("Start Speaking Practice")
+
 
                 Spacer()
             }

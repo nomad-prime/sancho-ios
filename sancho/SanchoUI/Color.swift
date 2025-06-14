@@ -14,4 +14,6 @@ extension Color {
         
         self.init(red: r, green: g, blue: b)
     }
+
+    static let sanchoLilac = Color(red: 0.8, green: 0.75, blue: 0.9) // Example RGB for Lilac
 }

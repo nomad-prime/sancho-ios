@@ -25,8 +25,8 @@
 
 /* Begin PBXFileReference section */
 		F24C00C62DEEC74A0058911E /* AmigoSancho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmigoSancho.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F24C00D52DEEC74C0058911E /* sanchoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sanchoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F24C00DF2DEEC74C0058911E /* sanchoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sanchoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24C00D52DEEC74C0058911E /* AmigoSanchoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmigoSanchoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24C00DF2DEEC74C0058911E /* AmigoSanchoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmigoSanchoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -86,8 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				F24C00C62DEEC74A0058911E /* AmigoSancho.app */,
-				F24C00D52DEEC74C0058911E /* sanchoTests.xctest */,
-				F24C00DF2DEEC74C0058911E /* sanchoUITests.xctest */,
+				F24C00D52DEEC74C0058911E /* AmigoSanchoTests.xctest */,
+				F24C00DF2DEEC74C0058911E /* AmigoSanchoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,9 +117,9 @@
 			productReference = F24C00C62DEEC74A0058911E /* AmigoSancho.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F24C00D42DEEC74C0058911E /* sanchoTests */ = {
+		F24C00D42DEEC74C0058911E /* AmigoSanchoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F24C00EC2DEEC74C0058911E /* Build configuration list for PBXNativeTarget "sanchoTests" */;
+			buildConfigurationList = F24C00EC2DEEC74C0058911E /* Build configuration list for PBXNativeTarget "AmigoSanchoTests" */;
 			buildPhases = (
 				F24C00D12DEEC74C0058911E /* Sources */,
 				F24C00D22DEEC74C0058911E /* Frameworks */,
@@ -133,16 +133,16 @@
 			fileSystemSynchronizedGroups = (
 				F24C00D82DEEC74C0058911E /* sanchoTests */,
 			);
-			name = sanchoTests;
+			name = AmigoSanchoTests;
 			packageProductDependencies = (
 			);
 			productName = sanchoTests;
-			productReference = F24C00D52DEEC74C0058911E /* sanchoTests.xctest */;
+			productReference = F24C00D52DEEC74C0058911E /* AmigoSanchoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F24C00DE2DEEC74C0058911E /* sanchoUITests */ = {
+		F24C00DE2DEEC74C0058911E /* AmigoSanchoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F24C00EF2DEEC74C0058911E /* Build configuration list for PBXNativeTarget "sanchoUITests" */;
+			buildConfigurationList = F24C00EF2DEEC74C0058911E /* Build configuration list for PBXNativeTarget "AmigoSanchoUITests" */;
 			buildPhases = (
 				F24C00DB2DEEC74C0058911E /* Sources */,
 				F24C00DC2DEEC74C0058911E /* Frameworks */,
@@ -156,11 +156,11 @@
 			fileSystemSynchronizedGroups = (
 				F24C00E22DEEC74C0058911E /* sanchoUITests */,
 			);
-			name = sanchoUITests;
+			name = AmigoSanchoUITests;
 			packageProductDependencies = (
 			);
 			productName = sanchoUITests;
-			productReference = F24C00DF2DEEC74C0058911E /* sanchoUITests.xctest */;
+			productReference = F24C00DF2DEEC74C0058911E /* AmigoSanchoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -201,8 +201,8 @@
 			projectRoot = "";
 			targets = (
 				F24C00C52DEEC74A0058911E /* AmigoSancho */,
-				F24C00D42DEEC74C0058911E /* sanchoTests */,
-				F24C00DE2DEEC74C0058911E /* sanchoUITests */,
+				F24C00D42DEEC74C0058911E /* AmigoSanchoTests */,
+				F24C00DE2DEEC74C0058911E /* AmigoSanchoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -400,6 +400,8 @@
 				DEVELOPMENT_TEAM = 5WM4449PNL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Sancho needs access to your microphone to listen to your spoken Spanish practice.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Sancho uses speech recognition to convert your spoken Spanish into text and help you improve your pronunciation and fluency.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +430,8 @@
 				DEVELOPMENT_TEAM = 5WM4449PNL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Sancho needs access to your microphone to listen to your spoken Spanish practice.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Sancho uses speech recognition to convert your spoken Spanish into text and help you improve your pronunciation and fluency.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -461,7 +465,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sancho.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sancho";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AmigoSancho.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AmigoSancho";
 			};
 			name = Debug;
 		};
@@ -480,7 +484,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sancho.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sancho";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AmigoSancho.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AmigoSancho";
 			};
 			name = Release;
 		};
@@ -494,10 +498,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nomadprime.sanchoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = sancho;
+				TEST_TARGET_NAME = AmigoSancho;
 			};
 			name = Debug;
 		};
@@ -511,10 +516,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nomadprime.sanchoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = sancho;
+				TEST_TARGET_NAME = AmigoSancho;
 			};
 			name = Release;
 		};
@@ -539,7 +545,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F24C00EC2DEEC74C0058911E /* Build configuration list for PBXNativeTarget "sanchoTests" */ = {
+		F24C00EC2DEEC74C0058911E /* Build configuration list for PBXNativeTarget "AmigoSanchoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F24C00ED2DEEC74C0058911E /* Debug */,
@@ -548,7 +554,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F24C00EF2DEEC74C0058911E /* Build configuration list for PBXNativeTarget "sanchoUITests" */ = {
+		F24C00EF2DEEC74C0058911E /* Build configuration list for PBXNativeTarget "AmigoSanchoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F24C00F02DEEC74C0058911E /* Debug */,
