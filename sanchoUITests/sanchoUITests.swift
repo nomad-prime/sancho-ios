@@ -1,10 +1,3 @@
-//
-//  sanchoUITests.swift
-//  sanchoUITests
-//
-//  Created by Armin Ghajar Jazi on 03.06.25.
-//
-
 import XCTest
 
 final class sanchoUITests: XCTestCase {
