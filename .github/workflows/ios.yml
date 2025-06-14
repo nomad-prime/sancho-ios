@@ -23,7 +23,7 @@ jobs:
             -scheme "sancho" \
             -project "sancho.xcodeproj" \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14' \
+            -destination 'platform=iOS Simulator' \
             ONLY_ACTIVE_ARCH=YES
 
       - name: Run tests
@@ -32,7 +32,7 @@ jobs:
             -scheme "sancho" \
             -project "sancho.xcodeproj" \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14' \
+            -destination 'platform=iOS Simulator' \
             ONLY_ACTIVE_ARCH=YES
 
       - name: Archive test results
