@@ -7,7 +7,7 @@ struct SanchoBubble: View {
     var body: some View {
         HStack {
             if isCurrentUser {
-                Spacer() // Push to the right for current user
+                Spacer()
             }
             Text(text)
                 .padding()
@@ -15,10 +15,10 @@ struct SanchoBubble: View {
                 .background(isCurrentUser ? SanchoTheme.primaryColor : Color(UIColor.systemGray5))
                 .cornerRadius(16.0)
             if !isCurrentUser {
-                Spacer() // Push to the left for other user (AI)
+                Spacer()
             }
         }
-        .padding(isCurrentUser ? .leading : .trailing, 20) // Add some horizontal padding to avoid edge hugging
+        .padding(isCurrentUser ? .leading : .trailing, 20) 
     }
 }
 

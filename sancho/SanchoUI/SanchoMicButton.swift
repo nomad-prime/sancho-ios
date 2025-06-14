@@ -16,7 +16,6 @@ struct SanchoMicButton: View {
                 .background(isListening ? Color.red : SanchoTheme.primaryColor)
                 .clipShape(Circle())
                 .scaleEffect(isListening ? 1.2 : 1.0)
-                // Apply the repeating animation only when isListening is true
                 .animation(isListening ? .easeInOut(duration: 0.5).repeatForever(autoreverses: true) : .default, value: isListening)
         }
     }
