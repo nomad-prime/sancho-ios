@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct LearnView: View {
+    @State private var isPracticeActive = false
+
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 30) {
                 Spacer()
 
@@ -10,14 +12,21 @@ struct LearnView: View {
                     .font(.title2)
                     .multilineTextAlignment(.center)
 
-                NavigationLink(destination: PracticeView()) {
-                    SanchoButton(title: "Start Speaking Practice") { }
+                SanchoButton(title: "Start Speaking Practice") {
+                    isPracticeActive = true
                 }
 
                 Spacer()
             }
             .padding()
+            .navigationDestination(isPresented: $isPracticeActive) {
+                PracticeView()
+            }
             .navigationTitle("Learn with Sancho")
         }
     }
+}
+
+#Preview {
+    LearnView()
 }
