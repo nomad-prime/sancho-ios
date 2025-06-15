@@ -1,13 +1,6 @@
-//
-//  sanchoTests.swift
-//  sanchoTests
-//
-//  Created by Armin Ghajar Jazi on 03.06.25.
-//
-
 import Testing
 import SwiftData
-@testable import sancho // Ensure your main app target is importable
+@testable import AmigoSancho
 import Foundation
 
 @Suite struct ModelTests {
