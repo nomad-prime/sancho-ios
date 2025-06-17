@@ -4,7 +4,16 @@ import Foundation
 import Speech
 
 @MainActor
-final class SpeechRecognizer: ObservableObject {
+protocol SpeechRecognizerProtocol {
+    var transcribedTextPublisher: Published<String>.Publisher { get }
+    var isListeningPublisher: Published<Bool>.Publisher { get }
+    func checkAndRequestPermissions() async -> Bool
+    func start() async throws
+    func stop()
+}
+
+@MainActor
+final class SpeechRecognizer: ObservableObject, SpeechRecognizerProtocol {
     @Published var transcribedText: String = ""
     @Published var isListening: Bool = false
 
@@ -14,6 +23,9 @@ final class SpeechRecognizer: ObservableObject {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
+    
+    var transcribedTextPublisher: Published<String>.Publisher { $transcribedText }
+    var isListeningPublisher: Published<Bool>.Publisher { $isListening }
 
     func checkAndRequestPermissions() async -> Bool {
         let speechStatus = SFSpeechRecognizer.authorizationStatus()

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PracticeView: View {
-    @StateObject private var viewModel = PracticeViewModel()
+    @StateObject private var viewModel = PracticeViewModel(speechRecognizer: SpeechRecognizer())
 
     var body: some View {
         NavigationStack {
@@ -38,7 +38,9 @@ struct PracticeView: View {
                 SanchoMicButton(
                     isListening: $viewModel.isListening
                 ) {
-                    viewModel.micButtonTapped()
+                    Task {
+                        await viewModel.micButtonTapped()
+                    }
                 }
                 .frame(width: 80, height: 80)
                 .padding(.bottom, 20)
