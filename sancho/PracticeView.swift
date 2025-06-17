@@ -1,28 +1,14 @@
-import AVFoundation
 import SwiftUI
-import Speech
-import AVFAudio
-
-struct ChatMessage: Identifiable {
-    let id = UUID()
-    var text: String
-    var isCurrentUser: Bool
-}
 
 struct PracticeView: View {
-    @StateObject private var speechRecognizer = SpeechRecognizer()
-    @State private var showPermissionAlert: Bool = false
-    @State private var messages: [ChatMessage] = [
-        ChatMessage(text: "¡Hola! Soy Sancho. Let's practice!", isCurrentUser: false),
-        ChatMessage(text: "Hola Sancho!", isCurrentUser: true)
-    ]
-    
+    @StateObject private var viewModel = PracticeViewModel()
+
     var body: some View {
         NavigationStack {
             VStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
-                        ForEach(messages) { message in
+                        ForEach(viewModel.messages) { message in
                             SanchoBubble(
                                 text: message.text,
                                 isCurrentUser: message.isCurrentUser
@@ -31,53 +17,49 @@ struct PracticeView: View {
                     }
                     .padding()
                 }
-                
+
                 Spacer()
-                
-                if !speechRecognizer.transcribedText.isEmpty || speechRecognizer.isListening {
+
+                if !viewModel.transcribedText.isEmpty
+                    || viewModel.isListening
+                {
                     Text(
-                        speechRecognizer.transcribedText.isEmpty
-                        ? "Listening..." : speechRecognizer.transcribedText
+                        viewModel.transcribedText.isEmpty
+                            ? "Listening..."
+                            : viewModel.transcribedText
                     )
                     .padding()
-                    .foregroundColor(speechRecognizer.isListening ? .gray : .black)
+                    .foregroundColor(
+                        viewModel.isListening ? .gray : .black
+                    )
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
-                
-                SanchoMicButton(isListening: $speechRecognizer.isListening) {
-                    Task {
-                        if speechRecognizer.isListening {
-                            speechRecognizer.stop()
-                        } else {
-                            let granted = await speechRecognizer.checkAndRequestPermissions()
-                            if granted {
-                                try? await speechRecognizer.start()
-                            } else {
-                                showPermissionAlert = true
-                            }
-                        }
-                    }
+
+                SanchoMicButton(
+                    isListening: $viewModel.isListening
+                ) {
+                    viewModel.micButtonTapped()
                 }
                 .frame(width: 80, height: 80)
                 .padding(.bottom, 20)
             }
-            .onChange(of: speechRecognizer.transcribedText) { newText in
-                // When recognizer stops and there's final text, add it to messages
-                if !newText.isEmpty && !speechRecognizer.isListening {
-                    messages.append(ChatMessage(text: newText, isCurrentUser: true))
-                }
-            }
             .navigationTitle("Sancho Chat")
-            .alert("Permissions Required", isPresented: $showPermissionAlert) {
+            .alert(
+                "Permissions Required",
+                isPresented: $viewModel.showPermissionAlert
+            ) {
                 Button("Open Settings") {
-                    if let url = URL(string: UIApplication.openSettingsURLString),
-                       UIApplication.shared.canOpenURL(url) {
+                    if let url = URL(
+                        string: UIApplication.openSettingsURLString
+                    ),
+                        UIApplication.shared.canOpenURL(url)
+                    {
                         UIApplication.shared.open(url)
                     }
-                    showPermissionAlert = false
+                    viewModel.showPermissionAlert = false
                 }
                 Button("Cancel", role: .cancel) {
-                    showPermissionAlert = false
+                    viewModel.showPermissionAlert = false
                 }
             } message: {
                 Text(
@@ -86,8 +68,4 @@ struct PracticeView: View {
             }
         }
     }
-}
-
-#Preview {
-    PracticeView()
 }
