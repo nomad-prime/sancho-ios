@@ -1,10 +1,3 @@
-//
-//  Item.swift
-//  sancho
-//
-//  Created by Armin Ghajar Jazi on 03.06.25.
-//
-
 import Foundation
 import SwiftData
 

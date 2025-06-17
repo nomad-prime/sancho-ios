@@ -1,0 +1,63 @@
+# macOS system files
+.DS_Store
+
+# Xcode
+*.xcworkspace
+!default.xcworkspace
+*.xcuserstate
+*.xcuserdata/
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
+
+# Xcode Derived Data & build products
+DerivedData/
+build/
+*.ipa
+*.app
+
+# Swift Package Manager
+.swiftpm/
+.build/
+
+# Cocoapods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Firebase / Crashlytics
+crashlytics-build.properties
+
+# Xcode Patch
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Playground files
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift PM Xcode Plugin
+Package.resolved
+
+# User-specific files
+*.swp
+*.swo
+*.orig
+
+# SwiftPM Binary Artifacts
+.artifacts/
+
+# Archives
+*.xcarchive
+
+# Other
+*.log
+
