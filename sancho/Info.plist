@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Sancho needs microphone access to help you practice your Spanish pronunciation.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Sancho needs access to speech recognition to understand your responses and help you learn.</string>
+</dict>
+</plist>

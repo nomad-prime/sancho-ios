@@ -12,22 +12,22 @@ struct ContentView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Label("Home", systemImage: "house.fill")
+                    Label("Sancho's Home", systemImage: "house.fill")
                 }
 
             LearnView()
                 .tabItem {
-                    Label("Learn", systemImage: "book.fill")
+                    Label("Let's Learn", systemImage: "book.fill")
                 }
 
             PracticeView()
                 .tabItem {
-                    Label("Practice", systemImage: "figure.walk")
+                    Label("Practice Time", systemImage: "figure.walk")
                 }
 
             ProfileView()
                 .tabItem {
-                    Label("Profile", systemImage: "person.fill")
+                    Label("My Progress", systemImage: "person.fill")
                 }
         }
     }

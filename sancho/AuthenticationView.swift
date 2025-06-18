@@ -9,7 +9,7 @@ struct AuthenticationView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Welcome to Sancho!")
+            Text("¡Hola! I'm Sancho - Your AI Spanish learning companion")
                 .font(.largeTitle)
                 .padding(.bottom, 40)
 
@@ -21,14 +21,14 @@ struct AuthenticationView: View {
             SecureField("Password", text: $password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 
-            Button("Login") {
+            Button("Let's Go!") {
                 // Action for login (placeholder)
                 print("Login button tapped")
             }
             .padding()
             .buttonStyle(.borderedProminent)
 
-            SanchoButton(title: "Sign Up") {
+            SanchoButton(title: "Join Sancho") {
                 // Action for sign up (placeholder)
                 print("Sign Up button tapped")
             }
