@@ -43,6 +43,10 @@ struct PracticeView: View {
                     }
                 }
                 .frame(width: 80, height: 80)
+
+                SanchoButton(title: viewModel.isSpeaking ? "Stop" : "Speak") {
+                    Task { await viewModel.speakLastMessage() }
+                }
                 .padding(.bottom, 20)
             }
             .navigationTitle("Sancho Chat")
