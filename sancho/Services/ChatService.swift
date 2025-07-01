@@ -10,12 +10,12 @@ protocol ChatServiceProtocol {
 }
 
 struct ChatService: ChatServiceProtocol {
+    let backend: BackendEnvironment
     var session: URLSession = .shared
 
     func chatStream(messages: [ChatMessage]) -> AsyncThrowingStream<String, Error> {
         AsyncThrowingStream { continuation in
-            guard case .live = BackendEnvironment.current,
-                  let url = BackendEnvironment.current.url(for: "/chat") else {
+            guard let url = backend.url(for: "/chat") else {
                 continuation.finish()
                 return
             }

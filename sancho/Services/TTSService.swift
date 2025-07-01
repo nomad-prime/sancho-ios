@@ -6,11 +6,11 @@ protocol TTSServiceProtocol {
 }
 
 struct TTSService: TTSServiceProtocol {
+    let backend: BackendEnvironment
     var session: URLSession = .shared
 
     func synthesizeSpeech(text: String, voiceId: String? = nil) async throws -> Data {
-        guard case .live = BackendEnvironment.current,
-              let url = BackendEnvironment.current.url(for: "/tts") else {
+        guard let url = backend.url(for: "/tts") else {
             return Data()
         }
 

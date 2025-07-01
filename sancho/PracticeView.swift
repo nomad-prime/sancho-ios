@@ -1,54 +1,88 @@
 import SwiftUI
 
 struct PracticeView: View {
-    @StateObject private var viewModel = PracticeViewModel(speechRecognizer: SpeechRecognizer())
+    @StateObject private var viewModel: PracticeViewModel
+    
+    init() {
+        let config = AppConfig.default
+        let backend = BackendEnvironment(config: config)
+        _viewModel = StateObject(
+            wrappedValue: PracticeViewModel(
+                speechRecognizer: SpeechRecognizer(),
+                chatService: ChatService(backend: backend),
+                ttsService: TTSService(backend: backend)
+            )
+        )
+    }
 
     var body: some View {
         NavigationStack {
-            VStack {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        ForEach(viewModel.messages) { message in
-                            SanchoBubble(
-                                text: message.text,
-                                isCurrentUser: message.isCurrentUser
-                            )
+            ZStack(alignment: .bottom) {
+                VStack(spacing: 0) {
+                    ScrollViewReader { proxy in
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: 12) {
+                                ForEach(viewModel.messages) { message in
+                                    SanchoBubble(
+                                        text: message.text,
+                                        isCurrentUser: message.isCurrentUser
+                                    )
+                                    .transition(
+                                        .opacity
+                                            .combined(
+                                                with: .move(edge: .bottom)
+                                            )
+                                    )
+                                }
+                            }
+                            .padding(.horizontal)
+                            .padding(.top, 16)
+                        }
+                        .onChange(of: viewModel.messages.count) { _ in
+                            if let last = viewModel.messages.last {
+                                withAnimation {
+                                    proxy.scrollTo(last.id, anchor: .bottom)
+                                }
+                            }
                         }
                     }
-                    .padding()
+
+                    Spacer()
+                        .frame(height: 140) // reserve space for mic and buttons
                 }
 
-                Spacer()
-
-                if !viewModel.transcribedText.isEmpty
-                    || viewModel.isListening
-                {
-                    Text(
-                        viewModel.transcribedText.isEmpty
+                VStack(spacing: 12) {
+                    if !viewModel.transcribedText.isEmpty || viewModel.isListening {
+                        Text(
+                            viewModel.transcribedText.isEmpty
                             ? "Listening..."
                             : viewModel.transcribedText
-                    )
-                    .padding()
-                    .foregroundColor(
-                        viewModel.isListening ? .gray : .black
-                    )
-                    .frame(maxWidth: .infinity, alignment: .center)
-                }
-
-                SanchoMicButton(
-                    isListening: $viewModel.isListening
-                ) {
-                    Task {
-                        await viewModel.micButtonTapped()
+                        )
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(.thinMaterial, in: Capsule())
+                        .foregroundColor(
+                            viewModel.isListening ? .gray : .primary
+                        )
+                        .font(
+                            .system(size: 16, weight: .medium, design: .rounded)
+                        )
+                        .transition(.opacity)
                     }
-                }
-                .frame(width: 80, height: 80)
 
-                SanchoButton(title: viewModel.isSpeaking ? "Stop" : "Speak") {
-                    Task { await viewModel.speakLastMessage() }
+                    HStack(spacing: 32) {
+                        SanchoMicButton(isListening: $viewModel.isListening) {
+                            Task { await viewModel.micButtonTapped() }
+                        }
+
+                        SanchoSpeakerButton(isSpeaking: $viewModel.isSpeaking
+                        ) {
+                            Task { await viewModel.speakLastMessage() }
+                        }
+                    }.padding(.bottom, 24)
                 }
-                .padding(.bottom, 20)
             }
+            .background(Color(.systemGroupedBackground).ignoresSafeArea())
             .navigationTitle("Sancho Chat")
             .alert(
                 "Permissions Required",
@@ -58,8 +92,7 @@ struct PracticeView: View {
                     if let url = URL(
                         string: UIApplication.openSettingsURLString
                     ),
-                        UIApplication.shared.canOpenURL(url)
-                    {
+                       UIApplication.shared.canOpenURL(url) {
                         UIApplication.shared.open(url)
                     }
                     viewModel.showPermissionAlert = false
@@ -74,4 +107,8 @@ struct PracticeView: View {
             }
         }
     }
+}
+
+#Preview {
+    PracticeView()
 }

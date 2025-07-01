@@ -5,7 +5,7 @@ import Speech
 import SwiftUI
 
 @MainActor
-final class PracticeViewModel: ObservableObject {
+final class PracticeViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     private var cancellables = Set<AnyCancellable>()
     private let speechRecognizer: SpeechRecognizerProtocol
     private let chatService: ChatServiceProtocol
@@ -25,12 +25,13 @@ final class PracticeViewModel: ObservableObject {
 
     init(
         speechRecognizer: SpeechRecognizerProtocol,
-        chatService: ChatServiceProtocol = ChatService(),
-        ttsService: TTSServiceProtocol = TTSService()
+        chatService: ChatServiceProtocol,
+        ttsService: TTSServiceProtocol
     ) {
         self.speechRecognizer = speechRecognizer
         self.chatService = chatService
         self.ttsService = ttsService
+        super.init()
         self.speechRecognizer.transcribedTextPublisher
             .dropFirst()
             .sink { [weak self] newText in
@@ -92,6 +93,12 @@ final class PracticeViewModel: ObservableObject {
         guard let last = messages.last(where: { !$0.isCurrentUser }) else { return }
         await speak(text: last.text)
     }
+    
+    nonisolated func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        Task { @MainActor in
+            self.isSpeaking = false
+        }
+    }
 
     private func speak(text: String) async {
         if isSpeaking {
@@ -102,6 +109,7 @@ final class PracticeViewModel: ObservableObject {
         do {
             let data = try await ttsService.synthesizeSpeech(text: text, voiceId: nil)
             audioPlayer = try AVAudioPlayer(data: data)
+            audioPlayer?.delegate = self
             audioPlayer?.play()
             isSpeaking = true
         } catch {

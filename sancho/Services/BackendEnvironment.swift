@@ -1,31 +1,23 @@
 import Foundation
 
-enum BackendEnvironment {
-    case mock
-    case live(URL)
+final class BackendEnvironment {
+    enum Mode {
+        case mock
+        case live(URL)
+    }
 
-    static var current: BackendEnvironment = {
-        if ProcessInfo.processInfo.environment["SANCHO_USE_MOCKS"] == "true" {
-            return .mock
-        }
-        if let urlString = ProcessInfo.processInfo.environment["SANCHO_BASE_URL"],
-           let url = URL(string: urlString) {
-            return .live(url)
-        }
-        return .live(URL(string: "http://localhost:3000")!)
-    }()
+    let mode: Mode
 
-    var baseURL: URL? {
-        switch self {
-        case .mock:
-            return nil
-        case let .live(url):
-            return url
+    init(config: AppConfig) {
+        if config.useMocks {
+            self.mode = .mock
+        } else {
+            self.mode = .live(config.baseURL)
         }
     }
 
     func url(for path: String) -> URL? {
-        guard let baseURL else { return nil }
+        guard case let .live(baseURL) = mode else { return nil }
         var trimmed = path
         if trimmed.hasPrefix("/") { trimmed.removeFirst() }
         return baseURL.appendingPathComponent(trimmed)

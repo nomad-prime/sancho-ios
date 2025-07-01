@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct sanchoApp: App {
+struct SanchoApp: App {
     @State private var isAuthenticated = false
 
     var sharedModelContainer: ModelContainer = {
@@ -29,7 +29,7 @@ struct sanchoApp: App {
     var body: some Scene {
         WindowGroup {
             if isAuthenticated {
-                ContentView()
+                PracticeView()
             } else {
                 AuthenticationView(isAuthenticated: $isAuthenticated)
             }
