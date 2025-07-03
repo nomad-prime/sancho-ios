@@ -9,47 +9,42 @@ struct SanchoMicButton: View {
             self.action()
         }) {
             Image(systemName: "mic.fill")
-                .font(.title)
+                .font(.system(size: 18))
                 .foregroundColor(.white)
-                .frame(width: 80, height: 80)
+                .frame(width: 40, height: 40)
                 .background(
                     isListening
-                        ? SanchoTheme.accentColor : SanchoTheme.primaryColor
+                    ? SanchoTheme.accentColor : SanchoTheme.primaryColor
                 )
                 .clipShape(Circle())
-                .scaleEffect(isListening ? 1.2 : 1.0)
-                // Ensure animation value tracks isListening
+                .scaleEffect(isListening ? 1.1 : 1.0)
                 .animation(
                     isListening
-                        ? .easeInOut(duration: 0.5).repeatForever(
-                            autoreverses: true
-                        ) : .default,
+                    ? .easeInOut(duration: 0.5).repeatForever(
+                        autoreverses: true
+                    ) : .default,
                     value: isListening
                 )
         }.accessibilityIdentifier("Sancho Mic Button")
     }
 }
 
-// Preview needs to be updated to provide binding and action
-// For the purpose of this subtask, the preview can be commented out or updated if straightforward.
-// Example of updated Preview:
-
 #if DEBUG
-    struct SanchoMicButton_Previews: PreviewProvider {
-        struct PreviewWrapper: View {
-            @State var isListening = false
-            var body: some View {
-                SanchoMicButton(
-                    isListening: $isListening,
-                    action: {
-                        print("Mic button tapped in preview")
-                        isListening.toggle()
-                    }
-                )
-            }
-        }
-        static var previews: some View {
-            PreviewWrapper()
+struct SanchoMicButton_Previews: PreviewProvider {
+    struct PreviewWrapper: View {
+        @State var isListening = false
+        var body: some View {
+            SanchoMicButton(
+                isListening: $isListening,
+                action: {
+                    print("Mic button tapped in preview")
+                    isListening.toggle()
+                }
+            )
         }
     }
+    static var previews: some View {
+        PreviewWrapper()
+    }
+}
 #endif
