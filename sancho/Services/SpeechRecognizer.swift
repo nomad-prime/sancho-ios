@@ -28,10 +28,16 @@ final class SpeechRecognizer: ObservableObject, SpeechRecognizerProtocol {
     var isListeningPublisher: Published<Bool>.Publisher { $isListening }
 
     func checkAndRequestPermissions() async -> Bool {
-        let speechStatus = SFSpeechRecognizer.authorizationStatus()
-        guard speechStatus == .authorized else {
+        let speechAuthorized = await withCheckedContinuation { continuation in
+            SFSpeechRecognizer.requestAuthorization { status in
+                continuation.resume(returning: status == .authorized)
+            }
+        }
+
+        guard speechAuthorized else {
             return false
         }
+
 
         let granted = await withCheckedContinuation { continuation in
             if #available(iOS 17, *) {

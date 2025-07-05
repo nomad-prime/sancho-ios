@@ -23,6 +23,12 @@ struct ChatService: ChatServiceProtocol {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let token = TokenStore.shared.accessToken
+            if !token.isEmpty {
+                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            }
+
             do {
                 let apiMessages = messages.map { APIChatMessage(role: $0.isCurrentUser ? "user" : "assistant", content: $0.text) }
                 request.httpBody = try JSONEncoder().encode(["messages": apiMessages])

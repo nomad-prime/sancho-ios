@@ -1,50 +1,77 @@
+import GoogleSignIn
+import GoogleSignInSwift
+import Supabase
 import SwiftUI
 
 struct AuthenticationView: View {
-    @State private var email = ""
-    @State private var password = ""
-
-    // This binding will be passed from sanchoApp to update the authentication state
     @Binding var isAuthenticated: Bool
+    @StateObject private var tokenStore = TokenStore.shared
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Welcome to Sancho!")
-                .font(.largeTitle)
-                .padding(.bottom, 40)
 
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.emailAddress)
-                .autocapitalization(.none)
+        VStack {
+            SanchoGoogleButton(variant: .continueWithGoogle) {
+                guard
+                    let rootViewController = self.rootViewController
+                else {
+                    print("No root view controller")
+                    return
+                }
+                Task {
+                    do {
+                        let result =
+                            try await GIDSignIn.sharedInstance
+                            .signIn(
+                                withPresenting: rootViewController
+                            )
 
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                        guard
+                            let idToken = result.user.idToken?
+                                .tokenString
+                        else {
+                            print("Missing tokens")
+                            return
+                        }
 
-            Button("Login") {
-                // Action for login (placeholder)
-                print("Login button tapped")
+                        let accessToken = result.user.accessToken
+                            .tokenString
+
+                        let session = try await SupabaseClientSingle.shared
+                            .auth.signInWithIdToken(
+                                credentials:
+                                    OpenIDConnectCredentials(
+                                        provider: .google,
+                                        idToken: idToken,
+                                        accessToken: accessToken
+                                    )
+                            )
+                        
+                        let supabaseToken = session.accessToken
+                        tokenStore.set(token: supabaseToken)
+
+                        isAuthenticated = true
+
+                    } catch {
+                        print("Sign-in failed:", error)
+                    }
+                }
             }
-            .padding()
-            .buttonStyle(.borderedProminent)
-
-            SanchoButton(title: "Sign Up") {
-                // Action for sign up (placeholder)
-                print("Sign Up button tapped")
-            }
-
-            // Temporary button to simulate successful login
-            SanchoButton(title: "Simulate Login") {
-                isAuthenticated = true
-            }
-            .padding(.top, 30)
-            .foregroundColor(.gray)
         }
-        .padding()
     }
 }
 
-// For previewing, we need to provide a constant binding
+extension AuthenticationView {
+    fileprivate var rootViewController: UIViewController? {
+        return UIApplication.shared.connectedScenes
+            .filter({ $0.activationState == .foregroundActive })
+            .compactMap { $0 as? UIWindowScene }
+            .compactMap { $0.keyWindow }
+            .first?.rootViewController
+    }
+}
+
 #Preview {
-    AuthenticationView(isAuthenticated: .constant(false))
+    StatefulPreviewWrapper(false) { isAuthenticated in
+        AuthenticationView(isAuthenticated: isAuthenticated)
+    }
 }

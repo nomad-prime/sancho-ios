@@ -68,7 +68,7 @@ final class PracticeViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate
 
     private func fetchAssistantReply() async {
         let currentMessages = messages
-        var newMessage = ChatMessage(text: "", isCurrentUser: false)
+        let newMessage = ChatMessage(text: "", isCurrentUser: false)
         messages.append(newMessage)
         let messageID = newMessage.id
 

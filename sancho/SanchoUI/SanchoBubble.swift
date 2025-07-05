@@ -13,7 +13,7 @@ struct SanchoBubble: View {
                 .padding()
                 .foregroundColor(isCurrentUser ? .white : .primary)
                 .background(isCurrentUser ? SanchoTheme.primaryColor : Color(UIColor.systemGray5))
-                .cornerRadius(16.0)
+                .cornerRadius(SanchoTheme.cornerRadius)
             if !isCurrentUser {
                 Spacer()
             }
