@@ -1,39 +1,38 @@
-//
-//  sanchoApp.swift
-//  sancho
-//
-//  Created by Armin Ghajar Jazi on 03.06.25.
-//
-
-import SwiftUI
+import GoogleSignIn
 import SwiftData
+import SwiftUI
 
 @main
 struct SanchoApp: App {
     @State private var isAuthenticated = false
 
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            LearningSession.self,
-            UserProgress.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     var body: some Scene {
         WindowGroup {
-            if isAuthenticated {
-                PracticeView()
-            } else {
-                AuthenticationView(isAuthenticated: $isAuthenticated)
+            Group {
+                if isAuthenticated {
+                    PracticeView().environment(\.font, .custom("Spectral-Regular", size: 16))
+                } else {
+                    StartScreenView(isAuthenticated: $isAuthenticated).environment(\.font, .custom("Spectral-Medium", size: 16))
+                }
             }
+            .onOpenURL { url in
+                GIDSignIn.sharedInstance.handle(url)
+            }
+//            .onAppear {
+//                GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+//                    if let user = user {
+//                        print(
+//                            "Restored session for: \(user.profile?.email ?? "unknown")"
+//                        )
+//                        isAuthenticated = true
+//                    } else if let error = error {
+//                        print(
+//                            "No existing Google session: \(error.localizedDescription)"
+//                        )
+//                    }
+//                }
+//            }
         }
-        .modelContainer(sharedModelContainer)
     }
+
 }

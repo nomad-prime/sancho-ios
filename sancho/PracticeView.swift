@@ -83,7 +83,6 @@ struct PracticeView: View {
                 }
             }
             .background(Color(.systemGroupedBackground).ignoresSafeArea())
-            .navigationTitle("Sancho Chat")
             .alert(
                 "Permissions Required",
                 isPresented: $viewModel.showPermissionAlert

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.234848996473-m6ijouqhn0p09matatc74mp4fpusns4b</string>
+			</array>
+		</dict>
+	</array>
+	<key>GIDClientID</key>
+	<string>234848996473-m6ijouqhn0p09matatc74mp4fpusns4b.apps.googleusercontent.com</string>
+	<key>GIDServerClientID</key>
+	<string>234848996473-8sv8eivkm83t79k76cs103j36cdkd3en.apps.googleusercontent.com</string>
+	<key>SUPABASE_ANON_KEY</key>
+	<string>${SUPABASE_ANON_KEY}</string>
+	<key>SUPABASE_URL</key>
+	<string>https://${SUPABASE_URL}</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Spectral-Regular.ttf</string>
+		<string>Spectral-SemiBold.ttf</string>
+		<string>Spectral-Medium.tff</string>
+		<string>Inter-Regular.ttf</string>
+		<string>Inter-Medium.ttf</string>
+		<string>Inter-SemiBold.ttf</string>
+	</array>
+</dict>
+</plist>

@@ -6,6 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F24C03B22E16ABC60058911E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F24C03B12E16ABC60058911E /* GoogleSignIn */; };
+		F24C03B42E16ABC60058911E /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F24C03B32E16ABC60058911E /* GoogleSignInSwift */; };
+		F24C03B72E16ACE20058911E /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = F24C03B62E16ACE20058911E /* Auth */; };
+		F24C03FD2E16AF8B0058911E /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = F24C03FC2E16AF8B0058911E /* Functions */; };
+		F24C03FF2E16AF8B0058911E /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = F24C03FE2E16AF8B0058911E /* PostgREST */; };
+		F24C04012E16AF8B0058911E /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = F24C04002E16AF8B0058911E /* Realtime */; };
+		F24C04032E16AF8B0058911E /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = F24C04022E16AF8B0058911E /* Storage */; };
+		F24C04052E16AFF30058911E /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = F24C04042E16AFF30058911E /* Supabase */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F24C00D62DEEC74C0058911E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +38,7 @@
 		F24C00C62DEEC74A0058911E /* AmigoSancho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmigoSancho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24C00D52DEEC74C0058911E /* AmigoSanchoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmigoSanchoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24C00DF2DEEC74C0058911E /* AmigoSanchoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AmigoSanchoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24C04062E16D84A0058911E /* AmigoSancho-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AmigoSancho-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +64,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F24C03B22E16ABC60058911E /* GoogleSignIn in Frameworks */,
+				F24C03B42E16ABC60058911E /* GoogleSignInSwift in Frameworks */,
+				F24C04032E16AF8B0058911E /* Storage in Frameworks */,
+				F24C03FD2E16AF8B0058911E /* Functions in Frameworks */,
+				F24C04052E16AFF30058911E /* Supabase in Frameworks */,
+				F24C04012E16AF8B0058911E /* Realtime in Frameworks */,
+				F24C03B72E16ACE20058911E /* Auth in Frameworks */,
+				F24C03FF2E16AF8B0058911E /* PostgREST in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +95,7 @@
 		F24C00BD2DEEC74A0058911E = {
 			isa = PBXGroup;
 			children = (
+				F24C04062E16D84A0058911E /* AmigoSancho-Info.plist */,
 				F24C00C82DEEC74A0058911E /* sancho */,
 				F24C00D82DEEC74C0058911E /* sanchoTests */,
 				F24C00E22DEEC74C0058911E /* sanchoUITests */,
@@ -112,6 +133,14 @@
 			);
 			name = AmigoSancho;
 			packageProductDependencies = (
+				F24C03B12E16ABC60058911E /* GoogleSignIn */,
+				F24C03B32E16ABC60058911E /* GoogleSignInSwift */,
+				F24C03B62E16ACE20058911E /* Auth */,
+				F24C03FC2E16AF8B0058911E /* Functions */,
+				F24C03FE2E16AF8B0058911E /* PostgREST */,
+				F24C04002E16AF8B0058911E /* Realtime */,
+				F24C04022E16AF8B0058911E /* Storage */,
+				F24C04042E16AFF30058911E /* Supabase */,
 			);
 			productName = sancho;
 			productReference = F24C00C62DEEC74A0058911E /* AmigoSancho.app */;
@@ -195,6 +224,10 @@
 			);
 			mainGroup = F24C00BD2DEEC74A0058911E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F24C03B02E16ABC60058911E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				F24C03B52E16ACE20058911E /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F24C00C72DEEC74A0058911E /* Products */;
 			projectDirPath = "";
@@ -271,6 +304,8 @@
 /* Begin XCBuildConfiguration section */
 		F24C00E72DEEC74C0058911E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = F24C00C82DEEC74A0058911E /* sancho */;
+			baseConfigurationReferenceRelativePath = Config.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -335,6 +370,8 @@
 		};
 		F24C00E82DEEC74C0058911E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = F24C00C82DEEC74A0058911E /* sancho */;
+			baseConfigurationReferenceRelativePath = Config.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -400,6 +437,8 @@
 				DEVELOPMENT_TEAM = 5WM4449PNL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AmigoSancho-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Sancho needs access to your microphone to listen to your spoken Spanish practice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Sancho uses speech recognition to convert your spoken Spanish into text and help you improve your pronunciation and fluency.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -430,6 +469,8 @@
 				DEVELOPMENT_TEAM = 5WM4449PNL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AmigoSancho-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Sancho needs access to your microphone to listen to your spoken Spanish practice.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Sancho uses speech recognition to convert your spoken Spanish into text and help you improve your pronunciation and fluency.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -564,6 +605,68 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F24C03B02E16ABC60058911E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+		F24C03B52E16ACE20058911E /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase-community/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F24C03B12E16ABC60058911E /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24C03B02E16ABC60058911E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		F24C03B32E16ABC60058911E /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24C03B02E16ABC60058911E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		F24C03B62E16ACE20058911E /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24C03B52E16ACE20058911E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		F24C03FC2E16AF8B0058911E /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24C03B52E16ACE20058911E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		F24C03FE2E16AF8B0058911E /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24C03B52E16ACE20058911E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		F24C04002E16AF8B0058911E /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24C03B52E16ACE20058911E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		F24C04022E16AF8B0058911E /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24C03B52E16ACE20058911E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		F24C04042E16AFF30058911E /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F24C03B52E16ACE20058911E /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F24C00BE2DEEC74A0058911E /* Project object */;
 }
